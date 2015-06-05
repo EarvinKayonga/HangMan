@@ -1,0 +1,16 @@
+<ion-view view-title="Scoring">
+  <ion-content class="padding">
+    <div class="score-panel"  >
+      <div class="person" ng-repeat=" item in score">
+        <div class="row">
+          <div class="col" id="name">
+            {{item.name }} :
+          </div>
+          <div class="col">
+            {{ item.score}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,26 @@
+<ion-view view-title="Settings">
+  <ion-content class="padding">
+    <ion-list>
+      <ion-toggle  ng-model="settings.sound">
+          Sound
+      </ion-toggle>
+
+      <ion-toggle ng-model="settings.fast">
+          Fast Mode
+      </ion-toggle>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Level
+        </div>
+        <select class="" name="value" ng-model="settings.level.value">
+          <option ng-repeat ="item in settings.level.possibilities">{{item}}</option>
+        </select>
+      </label>
+
+
+      <div class="face" ng-click="facebook();">
+        Connect to Facebook
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

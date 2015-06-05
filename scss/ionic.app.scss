@@ -1,0 +1,72 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+@font-face {
+    font-family: Font;
+    src: url(/font/Regular.otf);
+}
+
+
+  /* CSS Home Page*/
+  .home-section{
+    img{
+      width: 130%;
+      margin: 0 auto;
+    }
+    button{
+      margin: 0 auto;
+      height: 5% !important;
+    }
+  }
+
+  /* Score Page*/
+  .score-panel{
+    .person{
+      margin-left: 2px;
+      font-size: 82%;
+      font-family: Font;
+      #name{
+        text-align: right;
+      }
+    }
+  }
+
+  /* Settings */
+  .face{
+    background-color: #3a5795;
+    color: white;
+    text-align: center;
+    margin: 10px;
+  }
+
+  /* Game Section CSS */
+  .game{
+    text-align: center;
+    .button{
+      padding: 0 ;
+      margin: 0;
+    }
+    .button:first-child{
+      margin-top: 35px;
+      margin-bottom: 20px;
+    }
+  }
