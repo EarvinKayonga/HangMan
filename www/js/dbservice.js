@@ -20,14 +20,33 @@
     }
 
     Database.prototype.create = function(table_name, fields_description) {
+      var query = 'CREATE TABLE' + table_name + "(";
+      angular.forEach(fields_description,function(type,name){
+        query = name + " " + type + ",";
+      });
+      query = query.slice(0,-1) + ")";
+      this.execute(query);
     }
 
     Database.prototype.insert = function(table_name, fields_ar, values_ar) {
+      var query = 'INSERT INTO' + table_name + "(";
+      for(var i = 0; i <fields_ar.length; i++){
+        query += fields[i] + ",";
+      }
+      query = query.slice(0,-1) + ")";
+      query  = " VALUES (" + array[fields_ar.length]join("?,").slice(0,-1) + " )";
+      this.execute(query, values_ar);
+
     }
 
     Database.prototype.count = function(table_name, callback) {
     }
-    Database.prototype.remove = function(table_name, callback) {
+    Database.prototype.removeWithId = function(table_name, id, callback) {
+      var query = "DELETE FROM" + table_name + " WHERE id = " + id + " ;";
+      this.execute(query,[], function(){
+        callback();
+      });
+
     }
 
     // ATTRIBUTES
