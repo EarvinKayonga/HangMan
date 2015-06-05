@@ -1,8 +1,8 @@
 (function(){
   'use strict';
-  angular.module('starter.controllers', ['ionic'])
+  angular.module('starter.controllers', ['ionic','ngCordova'])
 
-  .controller('DashCtrl', function($scope) {})
+  .controller('TabCtrl', function($scope) {})
 
   .controller('ChatsCtrl', function($scope, Chats) {
     // With the new view caching in Ionic, Controllers are only called
@@ -21,7 +21,7 @@
   .controller('HomeCtrl', function($scope, $stateParams) {
 
   })
-  .controller('GameCtrl', function($scope, $stateParams,$ionicModal) {
+  .controller('GameCtrl', function($scope, $stateParams,$ionicModal, $ionicPopup) {
 
     $ionicModal.fromTemplateUrl('/templates/modal.html', {
     scope: $scope,
@@ -45,7 +45,15 @@
     });
 
     $scope.$on('modal.shown',function(){
-      
+       $ionicPopup.prompt({
+        title: 'doudou',
+        template: 'doudou',
+        inputType: 'text',
+        inputPlaceholder: 'doudou'
+      }).then(function(res){
+        console.log("the results : " + res );
+      })
+
     });
 
 
