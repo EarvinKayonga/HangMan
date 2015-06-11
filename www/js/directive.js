@@ -4,26 +4,28 @@
     .directive('hangmanStep', function() {
       return {
         restrict: 'E',
-        replace : true,
-        templateUrl : "templates/directive/hangmanstep.html",
-        scope : {
-          index : '='
+        replace: true,
+        templateUrl: "templates/directive/hangmanstep.html",
+        scope: {
+          index: '='
         },
         link: function(scope, elem, attrs) {
+          
         }
 
       }
-    })/*
-    .directive('hangmanData', function() {
-      return {
-        restrict: 'E',
+    })
+    /*
+        .directive('hangmanData', function() {
+          return {
+            restrict: 'E',
 
-        link: function(scope, elem, attrs) {
+            link: function(scope, elem, attrs) {
 
-        }
+            }
 
-      };
-    })*/
+          };
+        })*/
 
 
 

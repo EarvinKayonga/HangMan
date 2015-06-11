@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-content>
-    <div ng-if="meta.word!=undefined"> Debbuger: the choosen word is {{ meta.word }}  && nbStep :{{meta.nbStep}}
+    <div class="hangmanStep" ng-if="meta.word!=undefined"> Debbuger: the choosen word is {{ meta.word }}  && nbStep :{{meta.nbStep}}
       <hangman-step index="meta.nbStep" />
     </div>
 

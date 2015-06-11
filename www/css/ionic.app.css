@@ -7683,6 +7683,9 @@ a.button {
 .home-section img {
   width: 130%;
   margin: 0 auto; }
+  .home-section img .img {
+    width: 130%;
+    margin: 0 auto; }
 .home-section button {
   margin: 0 auto;
   height: 5% !important; }
@@ -7711,3 +7714,10 @@ a.button {
   .game .button:first-child {
     margin-top: 35px;
     margin-bottom: 20px; }
+
+/* Hangmanstep  Section*/
+.hangmanStep {
+  border: 2px black solid;
+  width: 90%; }
+  .hangmanStep .container {
+    margin: 0 auto; }

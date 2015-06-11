@@ -28,9 +28,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
   /* CSS Home Page*/
   .home-section{
+
     img{
       width: 130%;
       margin: 0 auto;
+      .img{
+        width: 130%;
+        margin: 0 auto;
+      }
     }
     button{
       margin: 0 auto;
@@ -69,4 +74,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       margin-top: 35px;
       margin-bottom: 20px;
     }
+  }
+
+  /* Hangmanstep  Section*/
+
+  .hangmanStep{
+    border: 2px black solid;
+    width: 90%;
+    .container{
+      margin: 0 auto;
+    }
+
   }
