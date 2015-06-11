@@ -1,4 +1,11 @@
+<ion-modal-view>
+  <ion-content>
+    <div ng-if="meta.word!=undefined"> Debbuger: the choosen word is {{ meta.word }}  && nbStep :{{meta.nbStep}}
+      <hangman-step index="meta.nbStep" />
+    </div>
 
-  <ion-modal-view>
-    
-   </ion-modal-view>
+    <hangman-data word=" {{ meta.word }}" found= " {{ meta.found }}" />
+
+
+  </ion-content>
+</ion-modal-view>
