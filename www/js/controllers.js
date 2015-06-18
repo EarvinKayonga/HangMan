@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'starter.directives'])
+  angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'starter.directives','starter.directivedata'])
 
   .controller('TabCtrl', function($scope) {})
 
@@ -34,6 +34,20 @@
         currentPlayer: "user"
       }
       $scope.lettres = [];
+      $scope.nextByCpu = function() {
+        if ((!$scope.meta.isfinished) && ($scope.meta.nbStep < 10)) {
+          var charset = "abcdefghijklmnopqrstuvwxyz";
+          var lettre = charset.charAt(Math.floor(Math.random() * charset.length));
+          if ($scope.meta.word.indexOf(lettre) != -1) {
+            $scope.lettres.push(lettre);
+          }
+          console.log(lettre);
+          $scope.meta.nbStep++;
+        } else {
+          $scope.meta.isfinished = true;
+        }
+
+      }
 
       $ionicModal.fromTemplateUrl('/templates/modal.html', {
         scope: $scope,
@@ -76,15 +90,15 @@
               type: 'button-positive',
               onTap: function(e) {
                 if (!$scope.meta.word || $scope.meta.word.length < 3 || $scope.meta.word.length > 10) {
-                  //don't allow the user to close unless he enters wifi password
+                  //don't allow the user to close unless he clicks on Ok
                   e.preventDefault();
                 }
               }
             }]
           }).then(function(res) {
-            console.log('The choosen is  : ' + $scope.meta.word);
+            console.log('The choosen is  : ' + $scope.meta.word); //FIXME
           });
-        }, 1000);
+        }, 600);
 
       });
 

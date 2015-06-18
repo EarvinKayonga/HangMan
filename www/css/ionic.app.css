@@ -7715,9 +7715,30 @@ a.button {
     margin-top: 35px;
     margin-bottom: 20px; }
 
+/* Modal section */
+.data {
+  margin: 3px;
+  width: 100%;
+  text-align: center; }
+
+.step {
+  margin: 3px;
+  width: 100%;
+  text-align: center; }
+
 /* Hangmanstep  Section*/
 .hangmanStep {
+  margin: 0 auto;
   border: 2px black solid;
-  width: 90%; }
+  width: 90%;
+  height: 400px;
+  /*  Hangman data section */ }
   .hangmanStep .container {
-    margin: 0 auto; }
+    margin: 0 auto;
+    width: 300px;
+    height: 300px; }
+  .hangmanStep .lettre {
+    display: inline-block;
+    margin: 2%;
+    padding: 2px;
+    font-size: 150%; }

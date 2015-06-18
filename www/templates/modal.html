@@ -1,11 +1,18 @@
 <ion-modal-view>
   <ion-content>
-    <div class="hangmanStep" ng-if="meta.word!=undefined"> Debbuger: the choosen word is {{ meta.word }}  && nbStep :{{meta.nbStep}}
-      <hangman-step index="meta.nbStep" />
+
+    <div class="hangmanStep" ng-if="meta.word!=undefined"> Debbuger: the choosen word is {{ meta.word }} && nbStep :{{meta.nbStep}}
+      <div class="step">
+        <hangman-step index="meta.nbStep" />
+      </div>
+      <div class="data">
+        <hangman-data word="meta.word" found="lettres" />
+      </div>
     </div>
 
-    <hangman-data word=" {{ meta.word }}" found= " {{ meta.found }}" />
 
+
+    <button  ng-click="nextByCpu()" ng-if="meta.word!=undefined" class="button button-full button-dark">Next</button>
 
   </ion-content>
 </ion-modal-view>

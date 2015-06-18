@@ -9,24 +9,7 @@
         scope: {
           index: '='
         },
-        link: function(scope, elem, attrs) {
-          
-        }
-
+        link: function(scope, elem, attrs) {}
       }
-    })
-    /*
-        .directive('hangmanData', function() {
-          return {
-            restrict: 'E',
-
-            link: function(scope, elem, attrs) {
-
-            }
-
-          };
-        })*/
-
-
-
+    });
 })();

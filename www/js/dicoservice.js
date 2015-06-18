@@ -11,6 +11,21 @@
         },
         {
         word : "template"
+      },
+      {
+      word : "totti"
+      },
+      {
+      word : "ordinateur"
+      },
+      {
+      word : "poulet"
+      },
+      {
+      word : "majdi"
+      },
+      {
+      word : "dormir"
       }]
     }
   });
