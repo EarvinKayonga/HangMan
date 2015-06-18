@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('starter.controllers', ['ionic', 'ngCordova','starter.services','starter.directives'])
+  angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'starter.directives'])
 
   .controller('TabCtrl', function($scope) {})
 
@@ -21,9 +21,9 @@
     .controller('HomeCtrl', function($scope, $stateParams) {
 
     })
-    .controller('GameCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup,dicoService) {
+    .controller('GameCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, dicoService, $timeout) {
       $scope.random = function(arg) {
-        var item = arg[_.random(arg.length)];
+        var item = arg[_.random(arg.length - 1)];
         return item;
       }
       $scope.meta = {
@@ -57,31 +57,34 @@
       });
 
       $scope.$on('modal.shown', function() {
-
-        $ionicPopup.prompt({
-          title: 'The word',
-          template: 'Choose a word the CPU will have to find',
-          inputType: 'text',
-          inputPlaceholder: 'the word between 3 and 10 letters',
-          cancelText: 'Random ',
-          onTap : function(e){
-            e.preventDefault();
-            return false;
-          }
-        }).then(function(res) {
-
-
-           if (res == undefined) {
-            $scope.meta.word = $scope.random(dicoService.dico).word.toUpperCase();
-
-          } else if ((res.length > 2) && (res.length < 11)) {
-            $scope.meta.word = res.toUpperCase();
-
-          }else {
-            $scope.meta.word = undefined;
-            console.log("error");
-          }
-        })
+        $timeout(function() {
+          $ionicPopup.show({
+            title: 'Choose a word between 3 and 10',
+            template: '<input type="text" ng-model="meta.word">',
+            inputPlaceholder: 'Choose a word the CPU will have to find',
+            scope: $scope,
+            buttons: [{
+              text: 'Random',
+              type: 'button-energized',
+              onTap: function(e) {
+                e.preventDefault();
+                $scope.meta.word = $scope.random(dicoService.dico).word.toUpperCase();
+                // return implicite car le mot est déjà stock dans le scope gràace au ng-model du input
+              }
+            }, {
+              text: '<b>Ok</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+                if (!$scope.meta.word || $scope.meta.word.length < 3 || $scope.meta.word.length > 10) {
+                  //don't allow the user to close unless he enters wifi password
+                  e.preventDefault();
+                }
+              }
+            }]
+          }).then(function(res) {
+            console.log('The choosen is  : ' + $scope.meta.word);
+          });
+        }, 1000);
 
       });
 
