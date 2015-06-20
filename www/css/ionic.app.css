@@ -7680,17 +7680,23 @@ a.button {
   src: url(/font/Regular.otf); }
 
 /* CSS Home Page*/
-.home-section img {
-  width: 130%;
-  margin: 0 auto; }
-  .home-section img .img {
-    width: 130%;
-    margin: 0 auto; }
-.home-section button {
-  margin: 0 auto;
-  height: 5% !important; }
+/*  .home-section{
 
-/* Score Page*/
+    img{
+      width: 130%;
+      margin: 0 auto;
+      .img{
+        width: 130%;
+        margin: 0 auto;
+      }
+    }
+    button{
+      margin: 0 auto;
+      height: 5% !important;
+    }
+  }
+
+  /* Score Page*/
 .score-panel .person {
   margin-left: 2px;
   font-size: 82%;
@@ -7716,17 +7722,18 @@ a.button {
     margin-bottom: 20px; }
 
 /* Modal section */
-.data {
-  margin: 3px;
-  width: 100%;
-  text-align: center; }
+/*  .data{
+    margin: 3px;
+    width: 100%;
+    text-align: center;
+  }
+  .step{
+    margin: 3px;
+    width: 100%;
+    text-align: center;
+  }
 
-.step {
-  margin: 3px;
-  width: 100%;
-  text-align: center; }
-
-/* Hangmanstep  Section*/
+  /* Hangmanstep  Section*/
 .hangmanStep {
   margin: 0 auto;
   border: 2px black solid;

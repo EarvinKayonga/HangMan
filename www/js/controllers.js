@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'starter.directives','starter.directivedata'])
+  angular.module('starter.controllers', ['ionic', 'ngCordova', 'starter.services', 'starter.directives', 'starter.directivedata'])
 
   .controller('TabCtrl', function($scope) {})
 
@@ -22,6 +22,7 @@
 
     })
     .controller('GameCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, dicoService, $timeout) {
+
       $scope.random = function(arg) {
         var item = arg[_.random(arg.length - 1)];
         return item;
@@ -33,21 +34,61 @@
         isfinished: false,
         currentPlayer: "user"
       }
+
+      $scope.$watch('meta.isfinished', function(newval, oldval) {
+        if ($scope.meta.isfinished || ($scope.nbStep===10)) {
+          $scope.$broadcast('game-end');
+        }
+      });
+
       $scope.lettres = [];
       $scope.nextByCpu = function() {
         if ((!$scope.meta.isfinished) && ($scope.meta.nbStep < 10)) {
           var charset = "abcdefghijklmnopqrstuvwxyz";
           var lettre = charset.charAt(Math.floor(Math.random() * charset.length));
-          if ($scope.meta.word.indexOf(lettre) != -1) {
-            $scope.lettres.push(lettre);
+          if ($scope.meta.word.indexOf(lettre.toUpperCase()) != -1) {
+            $scope.lettres.push(lettre.toUpperCase());
+          } else {
+            $scope.meta.nbStep++;
           }
           console.log(lettre);
-          $scope.meta.nbStep++;
+
+        }
+      }
+
+      // Event
+      $scope.$on('computer-play', function() {
+        $scope.interval = setInterval(function() {
+          $scope.nextByCpu();
+          $scope.$apply();
+        }, 3000);
+      });
+
+      $scope.$on('game-end', function() {
+        clearInterval($scope.interval);
+        var mytitle, mytemplate;
+        if ($scope.meta.isfinished) {
+          mytitle = "Well done";
+          mytemplate = "You won";
+
         } else {
-          $scope.meta.isfinished = true;
+          mytitle = "Sorry ";
+          mytemplate = "You lost";
         }
 
-      }
+        $ionicPopup.alert({
+          title: mytitle,
+          template: mytemplate
+        }).then(function(){
+          $scope.meta.found = [];
+          $scope.meta.lettres = [];
+          $scope.meta.currentstep = 0;
+          $scope.meta.nbStep = 0;
+          $scope.meta.isfinished= false;
+
+        });
+
+      });
 
       $ionicModal.fromTemplateUrl('/templates/modal.html', {
         scope: $scope,
@@ -97,13 +138,11 @@
             }]
           }).then(function(res) {
             console.log('The choosen is  : ' + $scope.meta.word); //FIXME
+            $scope.$broadcast('computer-play');
           });
         }, 600);
 
       });
-
-
-
     })
     .controller('SettingCtrl', function($scope, $stateParams) {
       $scope.facebook = function() {

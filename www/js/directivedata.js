@@ -8,7 +8,8 @@
       templateUrl: "templates/directive/hangmandata.html",
       scope: {
         word: '=',
-        found: '='
+        found: '=',
+        isfinished: '='
       },
       link: function(scope, elem, attrs) {
         scope.$watch('word', function(newval, oldval) {
@@ -35,11 +36,11 @@
                 scope.letters[i] = current.toUpperCase();
               }
             }
+            if (_.indexOf(scope.letters,'_') == -1) {
+              scope.isfinished = true;
+            }
           }
         });
-
-
-
 
       }
     }
